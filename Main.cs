@@ -94,24 +94,35 @@ namespace Futura2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
+            _spriteBatch.Begin();
+
+            Texture2D test = new Texture2D(_graphics.GraphicsDevice, 20, 20);
+            Color[] testc = new Color[400];
+            for (int i = 0; i < 400; i++)
+            {
+                testc[i] = Color.White;
+            }
+            test.SetData(testc);
+            _spriteBatch.Draw(test, new Vector2(0, 0), Color.White);
+            _spriteBatch.End();
 
             Texture2D texBuffer = new Texture2D(_graphics.GraphicsDevice, 1, 1);
 
             foreach (Box element in _elements)
             {
-                _spriteBatch.GraphicsDevice.BlendState = BlendState.AlphaBlend;
-                _spriteBatch.Begin();
+                //_spriteBatch.GraphicsDevice.BlendState = BlendState.AlphaBlend;
+                //_spriteBatch.Begin();
                 texBuffer = new Texture2D(_graphics.GraphicsDevice, element.X2 - element.X1, element.Y2 - element.Y1);
 
                 Color[] data = new Color[(element.X2 - element.X1) * (element.Y2 - element.Y1)];
                 for (int i = 0; i < data.Length; ++i)
                 {
-                    Vector2 coord = new Vector2(i / (element.X2 - element.X1), i % (element.Y2 - element.Y1));
-                    float xrad = (element.X2 - element.X1) / 2;
-                    float yrad = (element.Y2 - element.Y1) / 2;
-                    Vector2 normal = new Vector2(coord.X - (element.X2 - element.X1) / 2, coord.Y - (element.Y2 - element.Y1) / 2);
+                    ///Vector2 coord = new Vector2(i / (element.X2 - element.X1), i % (element.Y2 - element.Y1));
+                    //float xrad = (element.X2 - element.X1) / 2;
+                    //float yrad = (element.Y2 - element.Y1) / 2;
+                    //Vector2 normal = new Vector2(coord.X - (element.X2 - element.X1) / 2, coord.Y - (element.Y2 - element.Y1) / 2);
 
-                    data[i] = element.Color;
+                    //data[i] = element.Color;
 
                     //if (Math.Pow(xrad, 2) + (normal.X * normal.Y / Math.Pow(yrad, 2)) <= 1)
                     //{
@@ -123,11 +134,11 @@ namespace Futura2
                     //}
 
 
-                    texBuffer.SetData(data); // WHAT???
+                    //texBuffer.SetData(data); // WHAT???
 
                     Vector2 coor = new Vector2(element.X1, element.Y1);
-                    _spriteBatch.Draw(texBuffer, coor, Color.White);
-                    _spriteBatch.End();
+                    //_spriteBatch.Draw(texBuffer, coor, Color.White);
+                    //_spriteBatch.End();
 
                     texBuffer.Dispose();
                 }

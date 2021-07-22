@@ -12,9 +12,6 @@ namespace Futura2
             List<Box> elements = new List<Box>();
             Random rnd = new Random();
             int boxWidth = 50;
-            GraphicsDeviceManager test = graphics;
-
-            //throw new Exception($"{graphics}");
 
             for (int i = 0; i < elementCount; i++)
             {
