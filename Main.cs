@@ -123,7 +123,7 @@ namespace Futura2
                     //}
 
 
-                    texBuffer.SetData(data);
+                    texBuffer.SetData(data); // WHAT???
 
                     Vector2 coor = new Vector2(element.X1, element.Y1);
                     _spriteBatch.Draw(texBuffer, coor, Color.White);
